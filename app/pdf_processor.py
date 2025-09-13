@@ -41,6 +41,7 @@ def save_processed_data(extracted_lines, output_file="data\processed.json"):
         json.dump(data, f, ensure_ascii=False, indent=2)
     return output_file
 
+#For Testing
 if __name__ == "__main__":
     from pathlib import Path
     pdf_path = Path("data\Business_Licence.pdf")
