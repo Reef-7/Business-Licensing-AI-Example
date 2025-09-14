@@ -29,9 +29,10 @@
 <body>
     <h2>שאלון מהיר לרישוי עסק</h2>
 
-    <label>שם עסק: <input id="name" /></label>
-    <label>שטח במ״ר: <input id="area" type="number" /></label>
-    <label>מספר מקומות ישיבה: <input id="seating" type="number" /></label>
+    <label>שם עסק: <input id="name" placeholder="הכנס שם עסק" /></label>
+    <label>שטח במ״ר: <input id="area" type="number" placeholder="גודל במ" ר" /></label>
+    <label>מספר מקומות ישיבה: <input id="seating" type="number" placeholder="מספר מקומות ישיבה" /></label>
+
     <label><input id="gas" type="checkbox" /> שימוש בגז</label>
     <label><input id="meat" type="checkbox" /> הגשת בשר</label>
     <label><input id="deliver" type="checkbox" /> משלוחים</label>
@@ -39,6 +40,7 @@
 
     <h3>תוצאה:</h3>
     <div id="result" class="result">אין תוצאות עדיין</div>
+    <button id="downloadBtn" style="margin-top:10px;">הורד דוח</button>
 
     <script src="app.js"></script>
 </body>

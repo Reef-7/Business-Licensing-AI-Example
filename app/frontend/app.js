@@ -1,4 +1,12 @@
 const apiUrl = "http://127.0.0.1:8000/api/generate-report";
+function colorByPriority(priority) {
+    switch (priority) {
+        case "high": return "red";
+        case "medium": return "orange";
+        case "low": return "green";
+        default: return "black";
+    }
+}
 
 document.getElementById('send').addEventListener('click', async () => {
     const body = {
@@ -19,9 +27,41 @@ document.getElementById('send').addEventListener('click', async () => {
             body: JSON.stringify(body)
         });
         const data = await res.json();
-        // simple visualization of the report 
-        document.getElementById('result').innerText = data.report || JSON.stringify(data, null, 2);
+
+        // אם קיימות דרישות ממופות
+        const mapped = data.mapped_requirements || [];
+
+        // מיון לפי סדר עדיפות
+        const priorityOrder = { high: 1, medium: 2, low: 3 };
+        mapped.sort((a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]);
+
+        // הצגה מסודרת לפי קטגוריות
+        document.getElementById('result').innerHTML = `
+    <h4>דרישות חלות:</h4>
+    ${mapped.map(item => `<div style="color:${colorByPriority(item.priority)}">
+        <strong>${item.title}</strong>: ${item.details}</div>`).join("")}
+
+    <h4>סדר עדיפויות:</h4>
+    <ul>
+    ${mapped.map(item => `<li>${item.title} (${item.priority})</li>`).join("")}</ul>
+
+    <h4>דוח מלא:</h4>
+    <pre>${data.report}</pre>
+    `;
+
+        // כפתור הורדה
+        document.getElementById('downloadBtn').onclick = () => {
+            const blob = new Blob([data.report], { type: "text/plain;charset=utf-8" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "report.txt";
+            a.click();
+            URL.revokeObjectURL(url);
+        };
+
     } catch (err) {
         document.getElementById('result').innerText = "שגיאה: " + err;
     }
+
 });
