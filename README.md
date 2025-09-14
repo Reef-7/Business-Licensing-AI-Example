@@ -93,7 +93,7 @@ business-licensing-ai-example/
 ## 🧪 API Examples
 
 Generate Report
-
+```
 curl -X POST http://127.0.0.1:8000/api/generate-report \
 -H "Content-Type: application/json" \
 -d '{
@@ -104,10 +104,10 @@ curl -X POST http://127.0.0.1:8000/api/generate-report \
   "serves_meat": true,
   "delivers": false
 }
-
+```
 Sample Response:
 
-
+```
 {
   "mapped_requirements": [
     {"title":"אישור כיבוי אש","priority":"high"},
@@ -115,7 +115,7 @@ Sample Response:
   ],
   "report": "לפי הנתונים שמסרת, לעסק שלך חלות הדרישות הבאות..."
 }
-
+```
 ## 🛠 Development Tools
 - ChatGPT : Help with coding, clarifications, and optimizations.
 - Google Gemini API : Real-time reporting 
