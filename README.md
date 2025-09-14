@@ -122,3 +122,18 @@ Sample Response:
 ## 🛠 Development Tools
 - ChatGPT : Help with coding, clarifications, and optimizations.
 - Google Gemini API : Real-time reporting 
+
+
+## 🧾 Future improvements
+
+- Produce a PDF report with professional design
+
+- Connect to a database to save requests history
+
+- Expand requirements mapping (more regulatory scenarios)
+
+- Support for additional languages ​​
+
+## 📸 Screenshots
+
+See the doc/screenshots/ folder
