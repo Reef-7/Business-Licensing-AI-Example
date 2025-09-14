@@ -1,10 +1,11 @@
 const apiUrl = "http://127.0.0.1:8000/api/generate-report";
+
 function colorByPriority(priority) {
     switch (priority) {
-        case "high": return "red";
-        case "medium": return "orange";
-        case "low": return "green";
-        default: return "black";
+        case "high": return "high";
+        case "medium": return "medium";
+        case "low": return "low";
+        default: return "";
     }
 }
 
@@ -18,7 +19,8 @@ document.getElementById('send').addEventListener('click', async () => {
         delivers: document.getElementById('deliver').checked
     };
 
-    document.getElementById('result').innerText = "מייצר דוח...";
+    const resultDiv = document.getElementById('result');
+    resultDiv.innerHTML = '<span class="loading">🕐 מייצר דוח...</span>';
 
     try {
         const res = await fetch(apiUrl, {
@@ -28,26 +30,23 @@ document.getElementById('send').addEventListener('click', async () => {
         });
         const data = await res.json();
 
-        // אם קיימות דרישות ממופות
         const mapped = data.mapped_requirements || [];
-
-        // מיון לפי סדר עדיפות
         const priorityOrder = { high: 1, medium: 2, low: 3 };
         mapped.sort((a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]);
 
-        // הצגה מסודרת לפי קטגוריות
-        document.getElementById('result').innerHTML = `
-    <h4>דרישות חלות:</h4>
-    ${mapped.map(item => `<div style="color:${colorByPriority(item.priority)}">
-        <strong>${item.title}</strong>: ${item.details}</div>`).join("")}
+        // הצגת דוח בכרטיסים לפי עדיפות
+        const cardsHtml = mapped.map(item => `
+            <div class="card ${colorByPriority(item.priority)}">
+                <strong>${item.title}</strong><br>
+                ${item.details}<br>
+                <em>עדיפות: ${item.priority}</em>
+            </div>
+        `).join('');
 
-    <h4>סדר עדיפויות:</h4>
-    <ul>
-    ${mapped.map(item => `<li>${item.title} (${item.priority})</li>`).join("")}</ul>
+        // דוח מלא
+        const fullReport = `<h4>דוח מלא:</h4><pre>${data.report}</pre>`;
 
-    <h4>דוח מלא:</h4>
-    <pre>${data.report}</pre>
-    `;
+        resultDiv.innerHTML = cardsHtml + fullReport;
 
         // כפתור הורדה
         document.getElementById('downloadBtn').onclick = () => {
@@ -61,7 +60,6 @@ document.getElementById('send').addEventListener('click', async () => {
         };
 
     } catch (err) {
-        document.getElementById('result').innerText = "שגיאה: " + err;
+        resultDiv.innerHTML = "<span style='color:red;'>שגיאה: " + err + "</span>";
     }
-
 });
