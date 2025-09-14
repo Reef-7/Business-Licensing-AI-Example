@@ -63,31 +63,32 @@ Fill out the questionnaire and click "Create Report".
 
   
 ## 📂 Project Structure 
-
+```
 business-licensing-ai-example/
 │
 ├── app/
-│   ├── main.py               # FastAPI endpoints
-│   ├── ai_client.py          # Calls for Gemini API
-│   ├── license_mapper.py     # Mapping requirements according to business properties 
-│   ├── pdf_processor.py      # PDF → JSON processing script
-│   ├── data/
-│   │   ├── raw/              # original files 
-│   │   ├── processed.json    # processed text 
-│   │   └── mapped_requirements.json
-│   └── ...
+│ ├── main.py # FastAPI endpoints
+│ ├── ai_client.py # Calls for Gemini API
+│ ├── license_mapper.py # Mapping requirements according to business properties
+│ ├── pdf_processor.py # PDF → JSON processing script
+│ ├── data/
+│ │ ├── raw/ # original files
+│ │ ├── processed.json # processed text
+│ │ └── mapped_requirements.json
+│ └── ...
 │
 ├── frontend/
-│   ├── index.html
-│   └── app.js
+│ ├── index.html
+│ └── app.js
 │
 ├── doc/
-│   ├── development_log.md
-│   ├── prompts.md
-│   └── screenshots/
+│ ├── development_log.md
+│ ├── prompts.md
+│ └── screenshots/
 │
 ├── requirements.txt
 └── README.md
+```
 
 ## 🧪 API Examples
 
