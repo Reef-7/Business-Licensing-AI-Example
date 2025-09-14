@@ -35,7 +35,7 @@ def save_processed_data(extracted_lines, output_file="data\processed.json"):
         data.append({
             "id": i+1,
             "text": line,
-            "tags": []  # אפשר להוסיף תגיות לפי מילת מפתח
+            "tags": [] # אפשר להוסיף תגיות לפי מילת מפתח 
         })
     with open(output_file, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
