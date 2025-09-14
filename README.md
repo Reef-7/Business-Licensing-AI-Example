@@ -126,7 +126,7 @@ Sample Response:
 
 ## 🧾 Future improvements
 
-- Produce a PDF report with professional design
+- Produce a PDF report with more professional design
 
 - Connect to a database to save requests history
 
