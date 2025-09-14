@@ -8,6 +8,18 @@ from license_mapper import map_requirements
 from ai_client import generate_report  # the function that was built
 
 app = FastAPI(title="Business Licensing AI")
+from fastapi.middleware.cors import CORSMiddleware
+
+# Solved CORS Problem using middleware in FastAPI 
+# This allows calls from the frontend to the backend
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"], 
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 DATA_DIR = Path(__file__).parent / "data"
 

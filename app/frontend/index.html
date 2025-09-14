@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="he">
+
+<head>
+    <meta charset="utf-8" />
+    <title>שאלון רישוי עסק</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            padding: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 8px 0;
+        }
+
+        .result {
+            white-space: pre-wrap;
+            background: #f7f7f7;
+            padding: 10px;
+            border-radius: 6px;
+            margin-top: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>שאלון מהיר לרישוי עסק</h2>
+
+    <label>שם עסק: <input id="name" /></label>
+    <label>שטח במ״ר: <input id="area" type="number" /></label>
+    <label>מספר מקומות ישיבה: <input id="seating" type="number" /></label>
+    <label><input id="gas" type="checkbox" /> שימוש בגז</label>
+    <label><input id="meat" type="checkbox" /> הגשת בשר</label>
+    <label><input id="deliver" type="checkbox" /> משלוחים</label>
+    <button id="send">צור דוח</button>
+
+    <h3>תוצאה:</h3>
+    <div id="result" class="result">אין תוצאות עדיין</div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
