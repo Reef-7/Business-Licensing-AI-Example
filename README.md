@@ -10,10 +10,12 @@ This system allows business owners to:
 
 
 ## 🏗 General Architecture
+```
 **Frontend** : HTML + CSS + Vanilla JS
 **Backend**  : Python + FastAPI 
 **AI**       : Google Gemini 
 **Data**     : PDF File Processing → JSON → Requirements mapping
+```
 
 📊 **Flowchart:**
 
@@ -23,6 +25,7 @@ This system allows business owners to:
 ## ⚙️ Installation and Run Instructions
 
 ### 1. Installing a Development Environment
+```
 bash
 git clone git@github.com:Reef-7/Business-Licensing-AI-Example.git
 cd business-licensing-ai-example
@@ -32,7 +35,7 @@ venv\Scripts\activate
 # Mac/Linux:
 source venv/bin/activate
 pip install -r requirements.txt
-
+```
 ### 2. .env file
 
 Create a .env file in the app/ folder with:
